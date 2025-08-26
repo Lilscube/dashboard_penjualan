@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AuthProvider } from "@/provider/AuthContext";
 import "./globals.css";
 import SidebarAdmin from "@/components/Layout/SidebarAdmin";
 import TanstackProvider from "@/provider/TanstackProvider";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,8 +37,11 @@ export default function RootLayout({
 
             <SidebarAdmin />
             <TanstackProvider>
-              {children}
+              <AuthProvider>
+                {children}
+              </AuthProvider>
             </TanstackProvider>
+
           </div>
 
         </div>
